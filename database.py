@@ -59,3 +59,20 @@ class Database:
         self.BASE.metadata.create_all(self.engine)
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
+
+    def _object_add(self, object):
+        self.session.add(object)
+        self.session.commit()
+
+    def category_add(self, name):
+        new_category = self.Category(name=name)
+        self._object_add(new_category)
+
+    def author_add(self, name, surname, birth_date, nationality):
+        new_author = self.Author(name=name, surname=surname, birth_date=birth_date, nationality=nationality)
+        self._object_add(new_author)
+
+    def book_add(self, title, published_date, language, ISBN, category_id, author_id):
+        new_book = self.Book(title=title, published_date=published_date, language=language, ISBN=ISBN,
+                             category_id=category_id, author_id=author_id)
+        self._object_add(new_book)

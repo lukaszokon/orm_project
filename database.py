@@ -76,3 +76,16 @@ class Database:
         new_book = self.Book(title=title, published_date=published_date, language=language, ISBN=ISBN,
                              category_id=category_id, author_id=author_id)
         self._object_add(new_book)
+
+    def user_add(self, name, surname, birth_date, address, phone_number):
+        new_user = self.User(name=name, surname=surname, birth_date=birth_date, address=address,
+                             phone_number=phone_number)
+        self._object_add(new_user)
+
+    def book_borrow(self):
+        # TODO
+        pass
+
+    def book_return(self):
+        # TODO
+        pass
